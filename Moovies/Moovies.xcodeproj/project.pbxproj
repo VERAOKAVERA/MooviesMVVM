@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12896AC626CCF56000622B65 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12896AC526CCF56000622B65 /* Result.swift */; };
+		12067A1C271463EA0000D508 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A1B271463EA0000D508 /* MovieData.swift */; };
+		12067A1E271464B70000D508 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A1D271464B70000D508 /* MainViewModel.swift */; };
+		12067A24271468760000D508 /* UpdateViewDataTypealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A23271468760000D508 /* UpdateViewDataTypealias.swift */; };
+		12067A26271468AD0000D508 /* VoidHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A25271468AD0000D508 /* VoidHandler.swift */; };
+		12067A29271477FD0000D508 /* ModulesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A28271477FD0000D508 /* ModulesBuilder.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
 		12E2F75226CC3C12004E5367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E2F75026CC3C12004E5367 /* Main.storyboard */; };
@@ -17,13 +21,16 @@
 		12E2F76126CC3D32004E5367 /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F76026CC3D32004E5367 /* OverviewTableViewCell.swift */; };
 		12E2F76326CC3D4A004E5367 /* PosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F76226CC3D4A004E5367 /* PosterTableViewCell.swift */; };
 		12E2F76726CC3DC7004E5367 /* MoovieDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F76626CC3DC7004E5367 /* MoovieDescription.swift */; };
-		12E2F76926CC3DE1004E5367 /* Moovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F76826CC3DE1004E5367 /* Moovie.swift */; };
 		12E2F76B26CC3E10004E5367 /* MoovieDescriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F76A26CC3E0F004E5367 /* MoovieDescriptionTableViewController.swift */; };
 		12E2F76D26CC3E47004E5367 /* MooviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F76C26CC3E47004E5367 /* MooviesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		12896AC526CCF56000622B65 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		12067A1B271463EA0000D508 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		12067A1D271464B70000D508 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		12067A23271468760000D508 /* UpdateViewDataTypealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewDataTypealias.swift; sourceTree = "<group>"; };
+		12067A25271468AD0000D508 /* VoidHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidHandler.swift; sourceTree = "<group>"; };
+		12067A28271477FD0000D508 /* ModulesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesBuilder.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E2F74A26CC3C12004E5367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +42,6 @@
 		12E2F76026CC3D32004E5367 /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
 		12E2F76226CC3D4A004E5367 /* PosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterTableViewCell.swift; sourceTree = "<group>"; };
 		12E2F76626CC3DC7004E5367 /* MoovieDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoovieDescription.swift; sourceTree = "<group>"; };
-		12E2F76826CC3DE1004E5367 /* Moovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moovie.swift; sourceTree = "<group>"; };
 		12E2F76A26CC3E0F004E5367 /* MoovieDescriptionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoovieDescriptionTableViewController.swift; sourceTree = "<group>"; };
 		12E2F76C26CC3E47004E5367 /* MooviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +57,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12067A16271463210000D508 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				12067A1F271464C10000D508 /* ViewModel */,
+				12067A1A271463A40000D508 /* Model */,
+				12E2F76F26CC3E74004E5367 /* View */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		12067A17271463370000D508 /* MovieDescriptionModule */ = {
+			isa = PBXGroup;
+			children = (
+				12067A20271464D30000D508 /* MovieDescriptionViewModel */,
+				12E2F76E26CC3E68004E5367 /* Model */,
+				12067A18271463490000D508 /* View */,
+			);
+			path = MovieDescriptionModule;
+			sourceTree = "<group>";
+		};
+		12067A18271463490000D508 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12E2F76226CC3D4A004E5367 /* PosterTableViewCell.swift */,
+				12E2F76026CC3D32004E5367 /* OverviewTableViewCell.swift */,
+				12E2F76A26CC3E0F004E5367 /* MoovieDescriptionTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12067A1A271463A40000D508 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12067A1B271463EA0000D508 /* MovieData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		12067A1F271464C10000D508 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				12067A1D271464B70000D508 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		12067A20271464D30000D508 /* MovieDescriptionViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieDescriptionViewModel;
+			sourceTree = "<group>";
+		};
+		12067A21271467DC0000D508 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				12E2F74A26CC3C12004E5367 /* AppDelegate.swift */,
+				12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		12067A22271468480000D508 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				12067A23271468760000D508 /* UpdateViewDataTypealias.swift */,
+				12067A25271468AD0000D508 /* VoidHandler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		12067A27271477CC0000D508 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				12067A28271477FD0000D508 /* ModulesBuilder.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		12E2F73E26CC3C11004E5367 = {
 			isa = PBXGroup;
 			children = (
@@ -70,20 +155,15 @@
 		12E2F74926CC3C12004E5367 /* Moovies */ = {
 			isa = PBXGroup;
 			children = (
-				12E2F76F26CC3E74004E5367 /* Controllers */,
-				12E2F76E26CC3E68004E5367 /* Model */,
-				12E2F74A26CC3C12004E5367 /* AppDelegate.swift */,
-				12896AC526CCF56000622B65 /* Result.swift */,
-				12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */,
+				12067A27271477CC0000D508 /* Assembly */,
+				12067A22271468480000D508 /* Helpers */,
+				12067A21271467DC0000D508 /* Core */,
+				12067A17271463370000D508 /* MovieDescriptionModule */,
+				12067A16271463210000D508 /* MainModule */,
 				12E2F75026CC3C12004E5367 /* Main.storyboard */,
 				12E2F75326CC3C1C004E5367 /* Assets.xcassets */,
 				12E2F75526CC3C1C004E5367 /* LaunchScreen.storyboard */,
 				12E2F75826CC3C1C004E5367 /* Info.plist */,
-				12E2F76026CC3D32004E5367 /* OverviewTableViewCell.swift */,
-				12E2F76226CC3D4A004E5367 /* PosterTableViewCell.swift */,
-				12E2F76626CC3DC7004E5367 /* MoovieDescription.swift */,
-				12E2F76826CC3DE1004E5367 /* Moovie.swift */,
-				12E2F75E26CC3CF5004E5367 /* MooviesTableViewCell.swift */,
 			);
 			path = Moovies;
 			sourceTree = "<group>";
@@ -91,17 +171,18 @@
 		12E2F76E26CC3E68004E5367 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				12E2F76626CC3DC7004E5367 /* MoovieDescription.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		12E2F76F26CC3E74004E5367 /* Controllers */ = {
+		12E2F76F26CC3E74004E5367 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				12E2F76C26CC3E47004E5367 /* MooviesViewController.swift */,
-				12E2F76A26CC3E0F004E5367 /* MoovieDescriptionTableViewController.swift */,
+				12E2F75E26CC3CF5004E5367 /* MooviesTableViewCell.swift */,
 			);
-			path = Controllers;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,6 +195,8 @@
 				12E2F74326CC3C12004E5367 /* Sources */,
 				12E2F74426CC3C12004E5367 /* Frameworks */,
 				12E2F74526CC3C12004E5367 /* Resources */,
+				12067A14271461420000D508 /* SwiftFormatter */,
+				12067A152714615A0000D508 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -169,21 +252,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12067A14271461420000D508 /* SwiftFormatter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormatter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+		12067A152714615A0000D508 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		12E2F74326CC3C12004E5367 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12E2F76926CC3DE1004E5367 /* Moovie.swift in Sources */,
 				12E2F76326CC3D4A004E5367 /* PosterTableViewCell.swift in Sources */,
 				12E2F76D26CC3E47004E5367 /* MooviesViewController.swift in Sources */,
 				12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */,
 				12E2F75F26CC3CF5004E5367 /* MooviesTableViewCell.swift in Sources */,
+				12067A26271468AD0000D508 /* VoidHandler.swift in Sources */,
+				12067A24271468760000D508 /* UpdateViewDataTypealias.swift in Sources */,
 				12E2F76726CC3DC7004E5367 /* MoovieDescription.swift in Sources */,
 				12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */,
 				12E2F76126CC3D32004E5367 /* OverviewTableViewCell.swift in Sources */,
 				12E2F76B26CC3E10004E5367 /* MoovieDescriptionTableViewController.swift in Sources */,
-				12896AC626CCF56000622B65 /* Result.swift in Sources */,
+				12067A29271477FD0000D508 /* ModulesBuilder.swift in Sources */,
+				12067A1C271463EA0000D508 /* MovieData.swift in Sources */,
+				12067A1E271464B70000D508 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

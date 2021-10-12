@@ -12,7 +12,7 @@ final class MooviesViewController: UIViewController {
 
     private var segmentControl = UISegmentedControl(items: ["Популярные", "Топ-100", "Скоро"])
     internal var tableView = UITableView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,24 +68,6 @@ final class MooviesViewController: UIViewController {
         viewModel?.reloadTable = { [weak self] in
             self?.tableView.reloadData()
         }
-    }
-
-    private func getTopRatedRequest() {
-        title = "Топ-100 за все время"
-        viewModel?.getMovie(type: .topRated)
-        reloadTable()
-    }
-
-    private func getPopularRequest() {
-        title = "Популярные фильмы"
-        viewModel?.getMovie(type: .popular)
-        reloadTable()
-    }
-
-    private func getUpcomingRequest() {
-        title = "Скоро на экранах"
-        viewModel?.getMovie(type: .upcoming)
-        reloadTable()
     }
 }
 

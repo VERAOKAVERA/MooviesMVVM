@@ -10,6 +10,7 @@ protocol MovieAPIServiceProtocol: AnyObject {
 
 final class MovieAPIService: MovieAPIServiceProtocol {
     // MARK: - Internal Methods
+
     func getMovie(type: MovieListType, completion: @escaping (Swift.Result<[MovieData.Result], Error>) -> ()) {
         let urlAPI =
             "https://api.themoviedb.org/3/movie/\(type.urlPath)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"

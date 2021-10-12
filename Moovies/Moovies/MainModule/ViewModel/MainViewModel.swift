@@ -40,11 +40,13 @@ final class MainViewModel: MainViewModelProtocol {
     private var movieAPIService: MovieAPIServiceProtocol
 
     // MARK: - Internal Properties
+
     var results: [MovieData.Result]?
     var reloadTable: VoidHandler?
     var movieData: MovieHandler?
 
     // MARK: - Initialization
+
     init(movieAPIService: MovieAPIServiceProtocol) {
         self.movieAPIService = movieAPIService
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// необходимые данные для описания фильма
 struct Description: Decodable {
     var posterPath: String?
     let title: String

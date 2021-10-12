@@ -8,8 +8,11 @@
 import Foundation
 // ассоциативные данные
 enum MovieData {
+    // результаты топ-100 фильмов
     case topRated([Result])
+    // результаты самых популярных фильмов
     case popular([Result])
+    // результаты фильмов, которые скоро выйдут в прокат
     case upcoming([Result])
 
     struct Film: Decodable {

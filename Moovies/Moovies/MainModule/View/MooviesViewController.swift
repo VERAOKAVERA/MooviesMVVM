@@ -8,11 +8,11 @@
 import UIKit
 
 class MooviesViewController: UIViewController {
-    // MARK: Private Properties
+    // MARK: - Private Properties
 
     private var viewModel: MainViewModelProtocol?
 
-    // MARK: Private Visual Components
+    // MARK: - Private Visual Components
 
     private var segmentControl = UISegmentedControl(items: ["Популярные", "Топ-100", "Скоро"])
     internal var tableView = UITableView()
@@ -26,12 +26,12 @@ class MooviesViewController: UIViewController {
         reloadTable()
     }
 
-    // MARK: Private Methods
+    // MARK: - Internal Methods
 
     func setupViewModel(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
     }
-
+    // MARK: - Private Methods
     private func setupSegmentControl() {
         view.addSubview(segmentControl)
         segmentControl.backgroundColor = .systemPink
@@ -83,7 +83,7 @@ class MooviesViewController: UIViewController {
     private func getTopRatedRequest() {
         title = "Топ-100 за все время"
         let url =
-            "https://api.themoviedb.org/3/movie/top_rated?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
+        "https://api.themoviedb.org/3/movie/top_rated?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
         viewModel?.getMovie(url: url)
         reloadTable()
     }
@@ -103,7 +103,7 @@ class MooviesViewController: UIViewController {
     }
 }
 
-// MARK: Extension
+    // MARK: - Extension UITableViewDelegate
 
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -113,7 +113,7 @@ extension MooviesViewController: UITableViewDelegate {
         navigationController?.pushViewController(descriptionVC, animated: true)
     }
 }
-
+    // MARK: - Extension UITableViewDataSource
 extension MooviesViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         guard let countFilms = viewModel?.results?.count else { return Int() }

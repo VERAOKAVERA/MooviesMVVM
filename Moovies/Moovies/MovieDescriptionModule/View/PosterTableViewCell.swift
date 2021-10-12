@@ -8,22 +8,21 @@
 import UIKit
 
 class PosterTableViewCell: UITableViewCell {
-    // MARK: Static Properties
-
+    // MARK: - Static Properties
     static let identifier = "PosterTableViewCell"
 
-    // MARK: Private Visual Components
+    // MARK: - Private Visual Components
 
     private let posterImageView = UIImageView()
 
-    // MARK: Set Selected
+    // MARK: - Set Selected
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setupImageView()
     }
 
-    // MARK: Internal Methods
+    // MARK: - Internal Methods
 
     func configureCell(details: Description, indexPath _: IndexPath) {
         DispatchQueue.global().async {
@@ -37,7 +36,7 @@ class PosterTableViewCell: UITableViewCell {
         }
     }
 
-    // MARK: Private Methods
+    // MARK: - Private Methods
 
     private func setupImageView() {
         addSubview(posterImageView)

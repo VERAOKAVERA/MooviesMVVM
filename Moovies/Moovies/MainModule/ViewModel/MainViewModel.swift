@@ -7,6 +7,7 @@
 
 import Foundation
 
+    // MARK: - Protocol MainViewModelProtocol
 protocol MainViewModelProtocol {
     var results: [MovieData.Result]? { get }
     var movieData: UpdateMovieHandler? { get }
@@ -14,11 +15,13 @@ protocol MainViewModelProtocol {
     func getMovie(url: String)
 }
 
+    // MARK: - Class MainViewModel
 final class MainViewModel: MainViewModelProtocol {
     public var results: [MovieData.Result]?
     public var reloadTable: VoidHandler?
     public var movieData: UpdateMovieHandler?
 
+    // MARK: - InternalMethods
     func getMovie(url: String) {
         results?.removeAll()
         guard let url = URL(string: url) else { return }

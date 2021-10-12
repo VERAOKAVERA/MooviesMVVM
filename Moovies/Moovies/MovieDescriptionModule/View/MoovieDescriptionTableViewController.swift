@@ -8,24 +8,24 @@
 import UIKit
 
 class MoovieDescriptionTableViewController: UITableViewController {
-    // MARK: Enum
+    // MARK: - Enum
 
     enum Cells {
         case poster
         case overview
     }
 
-    // MARK: Internal Properties
+    // MARK: - Internal Properties
 
     var movieID = Int()
 
-    // MARK: Private Properties
+    // MARK: - Private Properties
 
     private var details: Description?
     private let cells: [Cells] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
 
-    // MARK: Life Cycle View Controller
+    // MARK: - Life Cycle View Controller
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class MoovieDescriptionTableViewController: UITableViewController {
         detailRequest()
     }
 
-    // MARK: Override Methods
+    // MARK: - Override Methods
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         cells.count
@@ -54,7 +54,7 @@ class MoovieDescriptionTableViewController: UITableViewController {
         return cell
     }
 
-    // MARK: Private Methods
+    // MARK: - Private Methods
 
     private func setupTableView() {
         tableView.allowsSelection = false

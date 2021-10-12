@@ -8,12 +8,10 @@
 import UIKit
 
 class MooviesTableViewCell: UITableViewCell {
-    // MARK: Static Properties
-
+    // MARK: - Static Properties
     static let identifier = "mooviesTableViewCell"
 
-    // MARK: Private Properties
-
+    // MARK: - Private Properties
     private let mainView = UIView()
     private let titleLabel = UILabel()
     private let posterImageView = UIImageView()
@@ -21,7 +19,8 @@ class MooviesTableViewCell: UITableViewCell {
     private let releaseDatelabel = UILabel()
     private let ratingAverageLabel = UILabel()
 
-    // MARK: Table View Cell (*)
+    // MARK: - Table View Cell (*)
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -33,6 +32,7 @@ class MooviesTableViewCell: UITableViewCell {
         setupAverage()
     }
 
+    // MARK: - Internal Methods
     func configureCell(
         posterPath: String?,
         title: String?,

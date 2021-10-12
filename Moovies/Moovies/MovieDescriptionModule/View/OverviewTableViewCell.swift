@@ -8,28 +8,27 @@
 import UIKit
 
 class OverviewTableViewCell: UITableViewCell {
-    // MARK: Static Properties
-
+    // MARK: - Static Properties
     static let identifier = "OverviewTableViewCell"
 
-    // MARK: Private Properties
+    // MARK: - Private Properties
 
     private let overviewLabel = UILabel()
 
-    // MARK: Set Selected
+    // MARK: - Set Selected
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setupOverviewLabel()
     }
 
-    // MARK: Internal Methods
+    // MARK: - Internal Methods
 
     func configureCell(details: Description, indexPath _: IndexPath) {
         overviewLabel.text = details.overview
     }
 
-    // MARK: Private Methods
+    // MARK: - Private Methods
 
     private func setupOverviewLabel() {
         addSubview(overviewLabel)

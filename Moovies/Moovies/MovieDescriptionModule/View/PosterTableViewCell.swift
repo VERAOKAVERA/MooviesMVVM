@@ -5,13 +5,13 @@ import UIKit
 
 final class PosterTableViewCell: UITableViewCell {
     // MARK: - Static Properties
-
     static let identifier = "PosterTableViewCell"
 
     // MARK: - Private Visual Components
-
-    let imageAPIService = ImageAPIService()
     private let posterImageView = UIImageView()
+
+    // MARK: - Internal Properties
+    let imageAPIService = ImageAPIService()
 
     // MARK: - Set Selected
 

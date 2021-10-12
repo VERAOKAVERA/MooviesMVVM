@@ -35,19 +35,21 @@ protocol MainViewModelProtocol: AnyObject {
 // MARK: - Class MainViewModel
 
 final class MainViewModel: MainViewModelProtocol {
-    // MARK: - Internal Properties
+    // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
 
+    // MARK: - Internal Properties
     var results: [MovieData.Result]?
     var reloadTable: VoidHandler?
     var movieData: MovieHandler?
 
+    // MARK: - Initialization
     init(movieAPIService: MovieAPIServiceProtocol) {
         self.movieAPIService = movieAPIService
     }
 
-    // MARK: - InternalMethods
+    // MARK: - Internal Methods
 
     func getMovie(type: MovieListType) {
         results?.removeAll()
@@ -63,26 +65,6 @@ final class MainViewModel: MainViewModelProtocol {
             }
         }
     }
-
-//        let urlAPI =
-//            "https://api.themoviedb.org/3/movie/\(type.urlPath)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
-//        guard let url = URL(string: urlAPI) else { return }
-//
-//        URLSession.shared.dataTask(with: url) { data, _, _ in
-//            guard let usageData = data else { return }
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let pageMovies = try decoder.decode(MovieData.Film.self, from: usageData)
-//                self.results = pageMovies.results
-//                DispatchQueue.main.async {
-//                    self.reloadTable?()
-//                }
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//        }.resume()
 
     func setupSwitchSegmentControl(segmentControl: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {

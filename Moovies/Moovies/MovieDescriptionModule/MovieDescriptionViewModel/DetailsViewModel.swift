@@ -2,6 +2,7 @@
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
+
 protocol DetailsViewModelProtocol: AnyObject {
     var details: Description? { get }
     var reloadTable: VoidHandler? { get set }
@@ -9,25 +10,24 @@ protocol DetailsViewModelProtocol: AnyObject {
 }
 
 final class DetailsViewModel: DetailsViewModelProtocol {
-    // MARK: Internal Properties
+    // MARK: - Internal Properties
 
     var movieID: Int?
     var reloadTable: VoidHandler?
     var details: Description?
 
-    // MARK: Private Properties
+    // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
 
-    // MARK: Initializers
+    // MARK: - Initializers
 
     init(movieAPIService: MovieAPIServiceProtocol, movieID: Int?) {
         self.movieAPIService = movieAPIService
         self.movieID = movieID
-        // getDetailsMovie()
     }
 
-    // MARK: Private Methods
+    // MARK: - Internal Methods
 
     func getDetailsMovie() {
         movieAPIService.getMovieDetails(movieID: movieID ?? 0) { [weak self] result in

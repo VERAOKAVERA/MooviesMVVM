@@ -8,11 +8,11 @@ final class MooviesViewController: UIViewController {
 
     private var viewModel: MainViewModelProtocol?
 
-    // MARK: - Private Visual Components
+    // MARK: - Visual Components
 
     private var segmentControl = UISegmentedControl(items: ["Популярные", "Топ-100", "Скоро"])
     internal var tableView = UITableView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -94,9 +94,6 @@ final class MooviesViewController: UIViewController {
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let id = viewModel?.results?[indexPath.row].id else { return }
-//        let descriptionVC = MoovieDescriptionTableViewController()
-//        descriptionVC.movieID = id
-//        navigationController?.pushViewController(descriptionVC, animated: true)
         let detailsTableViewController = MoovieDescriptionTableViewController()
         let movieAPIService = MovieAPIService()
         let detailsViewModel = DetailsViewModel(movieAPIService: movieAPIService, movieID: id)

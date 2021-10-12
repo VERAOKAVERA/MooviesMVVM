@@ -1,9 +1,5 @@
-//
-//  MovieDescription.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 17.08.2021.
-//
+// MoovieDescription.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 

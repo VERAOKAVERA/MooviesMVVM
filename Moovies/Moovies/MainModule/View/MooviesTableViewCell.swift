@@ -1,17 +1,15 @@
-//
-//  MooviesTableViewCell.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 17.08.2021.
-//
+// MooviesTableViewCell.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class MooviesTableViewCell: UITableViewCell {
+final class MooviesTableViewCell: UITableViewCell {
     // MARK: - Static Properties
+
     static let identifier = "mooviesTableViewCell"
 
     // MARK: - Private Properties
+
     private let mainView = UIView()
     private let titleLabel = UILabel()
     private let posterImageView = UIImageView()
@@ -20,7 +18,6 @@ class MooviesTableViewCell: UITableViewCell {
     private let ratingAverageLabel = UILabel()
 
     // MARK: - Table View Cell (*)
-
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -33,6 +30,7 @@ class MooviesTableViewCell: UITableViewCell {
     }
 
     // MARK: - Internal Methods
+
     func configureCell(
         posterPath: String?,
         title: String?,

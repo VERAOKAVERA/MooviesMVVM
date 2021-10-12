@@ -1,9 +1,5 @@
-//
-//  ModulesBuilder.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 11.10.2021.
-//
+// ModulesBuilder.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 import UIKit

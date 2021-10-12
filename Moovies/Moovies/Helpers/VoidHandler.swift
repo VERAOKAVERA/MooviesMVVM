@@ -1,10 +1,6 @@
-//
-//  VoidHandler.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 11.10.2021.
-//
+// VoidHandler.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 
-typealias VoidHandler = (() -> Void)
+typealias VoidHandler = (() -> ())

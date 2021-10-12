@@ -1,13 +1,9 @@
-//
-//  MoovieDescriptionTableViewController.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 17.08.2021.
-//
+// MoovieDescriptionTableViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class MoovieDescriptionTableViewController: UITableViewController {
+final class MoovieDescriptionTableViewController: UITableViewController {
     // MARK: - Enum
 
     enum Cells {

@@ -1,14 +1,11 @@
-//
-//  OverviewTableViewCell.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 17.08.2021.
-//
+// OverviewTableViewCell.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class OverviewTableViewCell: UITableViewCell {
+final class OverviewTableViewCell: UITableViewCell {
     // MARK: - Static Properties
+
     static let identifier = "OverviewTableViewCell"
 
     // MARK: - Private Properties

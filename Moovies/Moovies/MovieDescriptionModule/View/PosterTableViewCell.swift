@@ -1,14 +1,11 @@
-//
-//  PosterTableViewCell.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 17.08.2021.
-//
+// PosterTableViewCell.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class PosterTableViewCell: UITableViewCell {
+final class PosterTableViewCell: UITableViewCell {
     // MARK: - Static Properties
+
     static let identifier = "PosterTableViewCell"
 
     // MARK: - Private Visual Components

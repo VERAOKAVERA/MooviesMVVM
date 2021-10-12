@@ -1,13 +1,9 @@
-//
-//  MooviesTableViewController.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 17.08.2021.
-//
+// MooviesViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-class MooviesViewController: UIViewController {
+final class MooviesViewController: UIViewController {
     // MARK: - Private Properties
 
     private var viewModel: MainViewModelProtocol?
@@ -20,7 +16,8 @@ class MooviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel?.getMovie(url: "https://api.themoviedb.org/3/movie/popular?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU")
+        viewModel?
+            .getMovie(type: .popular)
         setupTableView()
         setupSegmentControl()
         reloadTable()
@@ -31,7 +28,9 @@ class MooviesViewController: UIViewController {
     func setupViewModel(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
     }
+
     // MARK: - Private Methods
+
     private func setupSegmentControl() {
         view.addSubview(segmentControl)
         segmentControl.backgroundColor = .systemPink
@@ -82,28 +81,24 @@ class MooviesViewController: UIViewController {
 
     private func getTopRatedRequest() {
         title = "Топ-100 за все время"
-        let url =
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
-        viewModel?.getMovie(url: url)
+        viewModel?.getMovie(type: .topRated)
         reloadTable()
     }
 
     private func getPopularRequest() {
         title = "Популярные фильмы"
-        let url = "https://api.themoviedb.org/3/movie/popular?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
-        viewModel?.getMovie(url: url)
+        viewModel?.getMovie(type: .popular)
         reloadTable()
     }
 
     private func getUpcomingRequest() {
         title = "Скоро на экранах"
-        let url = "https://api.themoviedb.org/3/movie/upcoming?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
-        viewModel?.getMovie(url: url)
+        viewModel?.getMovie(type: .upcoming)
         reloadTable()
     }
 }
 
-    // MARK: - Extension UITableViewDelegate
+// MARK: - Extension UITableViewDelegate
 
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -113,7 +108,9 @@ extension MooviesViewController: UITableViewDelegate {
         navigationController?.pushViewController(descriptionVC, animated: true)
     }
 }
-    // MARK: - Extension UITableViewDataSource
+
+// MARK: - Extension UITableViewDataSource
+
 extension MooviesViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         guard let countFilms = viewModel?.results?.count else { return Int() }

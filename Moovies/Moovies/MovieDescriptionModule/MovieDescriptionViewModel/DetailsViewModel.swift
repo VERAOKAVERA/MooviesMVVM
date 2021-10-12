@@ -30,7 +30,7 @@ final class DetailsViewModel: DetailsViewModelProtocol {
     // MARK: Private Methods
 
     func getDetailsMovie() {
-        movieAPIService.getMovieDetails(movieID: movieID) { [weak self] result in
+        movieAPIService.getMovieDetails(movieID: movieID ?? 0) { [weak self] result in
             switch result {
             case let .success(details):
                 self?.details = details

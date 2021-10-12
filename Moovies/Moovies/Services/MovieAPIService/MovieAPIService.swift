@@ -5,17 +5,17 @@ import Foundation
 
 protocol MovieAPIServiceProtocol: AnyObject {
     func getMovie(type: MovieListType, completion: @escaping (Swift.Result<[MovieData.Result], Error>) -> ())
-    func getMovieDetails(movieID: Int?, completion: @escaping (Swift.Result<Description, Error>) -> ())
+    func getMovieDetails(movieID: Int, completion: @escaping (Swift.Result<Description, Error>) -> ())
 }
 
 final class MovieAPIService: MovieAPIServiceProtocol {
     // MARK: Private Proeprties
 
-    private var decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
-    }()
+//    private var decoder: JSONDecoder = {
+//        let decoder = JSONDecoder()
+//        decoder.keyDecodingStrategy = .convertFromSnakeCase
+//        return decoder
+//    }()
 
     // MARK: Internal Methods
 
@@ -50,7 +50,9 @@ final class MovieAPIService: MovieAPIServiceProtocol {
             guard let usageData = data else { return }
 
             do {
-                let movieList = try self.decoder.decode(MovieData.Film.self, from: usageData)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let movieList = try decoder.decode(MovieData.Film.self, from: usageData)
                 completion(.success(movieList.results))
             } catch {
                 completion(.failure(error))
@@ -58,7 +60,7 @@ final class MovieAPIService: MovieAPIServiceProtocol {
         }.resume()
     }
 
-    func getMovieDetails(movieID: Int?, completion: @escaping (Swift.Result<Description, Error>) -> ()) {
+    func getMovieDetails(movieID: Int, completion: @escaping (Swift.Result<Description, Error>) -> ()) {
         guard let urlAPI =
             URL(
                 string: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
@@ -68,7 +70,9 @@ final class MovieAPIService: MovieAPIServiceProtocol {
             guard let usageData = data else { return }
 
             do {
-                let details = try self.decoder.decode(Description.self, from: usageData)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let details = try decoder.decode(Description.self, from: usageData)
                 completion(.success(details))
             } catch {
                 completion(.failure(error))

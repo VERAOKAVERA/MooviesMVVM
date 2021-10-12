@@ -10,6 +10,7 @@ final class MooviesTableViewCell: UITableViewCell {
 
     // MARK: - Private Properties
 
+    private let imageAPIService = ImageAPIService()
     private let mainView = UIView()
     private let titleLabel = UILabel()
     private let posterImageView = UIImageView()
@@ -38,13 +39,12 @@ final class MooviesTableViewCell: UITableViewCell {
         releaseDate: String?,
         voteAverage: Float?
     ) {
-        DispatchQueue.global().async {
-            guard let posterPath = posterPath,
-                  let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"),
-                  let imageData = try? Data(contentsOf: url),
-                  let posterImage = UIImage(data: imageData) else { return }
-            DispatchQueue.main.async {
-                self.posterImageView.image = posterImage
+        imageAPIService.getImage(imagePath: posterPath ?? "") { [weak self] result in
+            switch result {
+            case let .success(image):
+                self?.posterImageView.image = image
+            case let .failure(error):
+                print(error.localizedDescription)
             }
         }
         titleLabel.text = title

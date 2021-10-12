@@ -13,10 +13,11 @@ final class MoovieDescriptionTableViewController: UITableViewController {
 
     // MARK: - Internal Properties
 
-    var movieID = Int()
+    // var movieID = Int()
 
     // MARK: - Private Properties
 
+    private var viewModel: DetailsViewModelProtocol?
     private var details: Description?
     private let cells: [Cells] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
@@ -26,7 +27,9 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        detailRequest()
+        viewModel?.getDetailsMovie()
+        // viewModel.
+        // detailRequest()
     }
 
     // MARK: - Override Methods
@@ -36,7 +39,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let detail = details else { return UITableViewCell() }
+        guard let detail = viewModel?.details else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: identifires[indexPath.row], for: indexPath)
         title = details?.title
         switch cells[indexPath.row] {
@@ -52,6 +55,16 @@ final class MoovieDescriptionTableViewController: UITableViewController {
 
     // MARK: - Private Methods
 
+    private func reloadTable() {
+        viewModel?.reloadTable = { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+
+    func setupViewModel(viewModel: DetailsViewModelProtocol) {
+        self.viewModel = viewModel
+    }
+
     private func setupTableView() {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
@@ -62,27 +75,27 @@ final class MoovieDescriptionTableViewController: UITableViewController {
         tableView.register(OverviewTableViewCell.self, forCellReuseIdentifier: OverviewTableViewCell.identifier)
     }
 
-    private func detailRequest() {
-        guard let url =
-            URL(
-                string: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
-            )
-        else { return }
-        URLSession.shared.dataTask(with: url) { data, response, _ in
-            guard let usageData = data,
-                  let usageResponse = response as? HTTPURLResponse else { return }
-            print("status code: \(usageResponse.statusCode)")
-
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                self.details = try decoder.decode(Description.self, from: usageData)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("Error detail request")
-            }
-        }.resume()
-    }
+//    private func detailRequest() {
+//        guard let url =
+//            URL(
+//                string: "https://api.themoviedb.org/3/movie/\(movieID)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
+//            )
+//        else { return }
+//        URLSession.shared.dataTask(with: url) { data, response, _ in
+//            guard let usageData = data,
+//                  let usageResponse = response as? HTTPURLResponse else { return }
+//            print("status code: \(usageResponse.statusCode)")
+//
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                self.details = try decoder.decode(Description.self, from: usageData)
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//            } catch {
+//                print("Error detail request")
+//            }
+//        }.resume()
+//    }
 }

@@ -10,6 +10,7 @@ final class PosterTableViewCell: UITableViewCell {
 
     // MARK: - Private Visual Components
 
+    let imageAPIService = ImageAPIService()
     private let posterImageView = UIImageView()
 
     // MARK: - Set Selected
@@ -22,13 +23,12 @@ final class PosterTableViewCell: UITableViewCell {
     // MARK: - Internal Methods
 
     func configureCell(details: Description, indexPath _: IndexPath) {
-        DispatchQueue.global().async {
-            guard let posterPath = details.posterPath,
-                  let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"),
-                  let imageData = try? Data(contentsOf: url),
-                  let posterImage = UIImage(data: imageData) else { return }
-            DispatchQueue.main.async {
-                self.posterImageView.image = posterImage
+        imageAPIService.getImage(imagePath: details.posterPath ?? "") { [weak self] result in
+            switch result {
+            case let .success(image):
+                self?.posterImageView.image = image
+            case let .failure(error):
+                print(error.localizedDescription)
             }
         }
     }

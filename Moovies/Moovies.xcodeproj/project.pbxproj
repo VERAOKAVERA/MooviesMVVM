@@ -12,6 +12,9 @@
 		12067A24271468760000D508 /* MovieHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A23271468760000D508 /* MovieHandler.swift */; };
 		12067A26271468AD0000D508 /* VoidHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A25271468AD0000D508 /* VoidHandler.swift */; };
 		12067A29271477FD0000D508 /* ModulesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12067A28271477FD0000D508 /* ModulesBuilder.swift */; };
+		1252B87D2715CBA800A08396 /* ImageAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B87C2715CBA800A08396 /* ImageAPIService.swift */; };
+		1252B8802715CD2000A08396 /* MovieAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B87F2715CD2000A08396 /* MovieAPIService.swift */; };
+		1252B8822715CFE500A08396 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B8812715CFE500A08396 /* DetailsViewModel.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
 		12E2F75226CC3C12004E5367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E2F75026CC3C12004E5367 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 		12067A23271468760000D508 /* MovieHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHandler.swift; sourceTree = "<group>"; };
 		12067A25271468AD0000D508 /* VoidHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidHandler.swift; sourceTree = "<group>"; };
 		12067A28271477FD0000D508 /* ModulesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModulesBuilder.swift; sourceTree = "<group>"; };
+		1252B87C2715CBA800A08396 /* ImageAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIService.swift; sourceTree = "<group>"; };
+		1252B87F2715CD2000A08396 /* MovieAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPIService.swift; sourceTree = "<group>"; };
+		1252B8812715CFE500A08396 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E2F74A26CC3C12004E5367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +112,7 @@
 		12067A20271464D30000D508 /* MovieDescriptionViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1252B8812715CFE500A08396 /* DetailsViewModel.swift */,
 			);
 			path = MovieDescriptionViewModel;
 			sourceTree = "<group>";
@@ -136,6 +143,31 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		1252B87A2715CB8A00A08396 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1252B87E2715CC8300A08396 /* MovieAPIService */,
+				1252B87B2715CB9400A08396 /* ImageService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1252B87B2715CB9400A08396 /* ImageService */ = {
+			isa = PBXGroup;
+			children = (
+				1252B87C2715CBA800A08396 /* ImageAPIService.swift */,
+			);
+			path = ImageService;
+			sourceTree = "<group>";
+		};
+		1252B87E2715CC8300A08396 /* MovieAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				1252B87F2715CD2000A08396 /* MovieAPIService.swift */,
+			);
+			path = MovieAPIService;
+			sourceTree = "<group>";
+		};
 		12E2F73E26CC3C11004E5367 = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +187,7 @@
 		12E2F74926CC3C12004E5367 /* Moovies */ = {
 			isa = PBXGroup;
 			children = (
+				1252B87A2715CB8A00A08396 /* Services */,
 				12067A27271477CC0000D508 /* Assembly */,
 				12067A22271468480000D508 /* Helpers */,
 				12067A21271467DC0000D508 /* Core */,
@@ -297,7 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				12E2F76326CC3D4A004E5367 /* PosterTableViewCell.swift in Sources */,
+				1252B8802715CD2000A08396 /* MovieAPIService.swift in Sources */,
 				12E2F76D26CC3E47004E5367 /* MooviesViewController.swift in Sources */,
+				1252B8822715CFE500A08396 /* DetailsViewModel.swift in Sources */,
+				1252B87D2715CBA800A08396 /* ImageAPIService.swift in Sources */,
 				12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */,
 				12E2F75F26CC3CF5004E5367 /* MooviesTableViewCell.swift in Sources */,
 				12067A26271468AD0000D508 /* VoidHandler.swift in Sources */,

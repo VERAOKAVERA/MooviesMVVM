@@ -40,16 +40,7 @@ final class MooviesViewController: UIViewController {
     }
 
     @objc func segmentedValueChanged(_: UISegmentedControl!) {
-        switch segmentControl.selectedSegmentIndex {
-        case 0:
-            getPopularRequest()
-        case 1:
-            getTopRatedRequest()
-        case 2:
-            getUpcomingRequest()
-        default:
-            getPopularRequest()
-        }
+        viewModel?.setupSwitchSegmentControl(segmentControl: segmentControl)
     }
 
     private func setupTableView() {

@@ -8,7 +8,7 @@ final class MooviesViewController: UIViewController {
 
     private var viewModel: MainViewModelProtocol?
 
-    // MARK: - Private Visual Components
+    // MARK: - Visual Components
 
     private var segmentControl = UISegmentedControl(items: ["Популярные", "Топ-100", "Скоро"])
     internal var tableView = UITableView()
@@ -69,24 +69,6 @@ final class MooviesViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
-
-    private func getTopRatedRequest() {
-        title = "Топ-100 за все время"
-        viewModel?.getMovie(type: .topRated)
-        reloadTable()
-    }
-
-    private func getPopularRequest() {
-        title = "Популярные фильмы"
-        viewModel?.getMovie(type: .popular)
-        reloadTable()
-    }
-
-    private func getUpcomingRequest() {
-        title = "Скоро на экранах"
-        viewModel?.getMovie(type: .upcoming)
-        reloadTable()
-    }
 }
 
 // MARK: - Extension UITableViewDelegate
@@ -94,9 +76,11 @@ final class MooviesViewController: UIViewController {
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let id = viewModel?.results?[indexPath.row].id else { return }
-        let descriptionVC = MoovieDescriptionTableViewController()
-        descriptionVC.movieID = id
-        navigationController?.pushViewController(descriptionVC, animated: true)
+        let detailsTableViewController = MoovieDescriptionTableViewController()
+        let movieAPIService = MovieAPIService()
+        let detailsViewModel = DetailsViewModel(movieAPIService: movieAPIService, movieID: id)
+        detailsTableViewController.setupViewModel(viewModel: detailsViewModel)
+        navigationController?.pushViewController(detailsTableViewController, animated: true)
     }
 }
 

@@ -24,7 +24,7 @@ enum MovieListType: Int {
 
 // MARK: - Protocol MainViewModelProtocol
 
-protocol MainViewModelProtocol {
+protocol MainViewModelProtocol: AnyObject {
     var results: [MovieData.Result]? { get }
     var movieData: MovieHandler? { get }
     var reloadTable: VoidHandler? { get set }
@@ -35,35 +35,37 @@ protocol MainViewModelProtocol {
 // MARK: - Class MainViewModel
 
 final class MainViewModel: MainViewModelProtocol {
+    // MARK: - Private Properties
+
+    private var movieAPIService: MovieAPIServiceProtocol
+
     // MARK: - Internal Properties
 
     var results: [MovieData.Result]?
     var reloadTable: VoidHandler?
     var movieData: MovieHandler?
 
-    // MARK: - InternalMethods
+    // MARK: - Initialization
+
+    init(movieAPIService: MovieAPIServiceProtocol) {
+        self.movieAPIService = movieAPIService
+    }
+
+    // MARK: - Internal Methods
 
     func getMovie(type: MovieListType) {
         results?.removeAll()
-        let urlAPI =
-            "https://api.themoviedb.org/3/movie/\(type.urlPath)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
-        guard let url = URL(string: urlAPI) else { return }
-
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let usageData = data else { return }
-
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let pageMovies = try decoder.decode(MovieData.Film.self, from: usageData)
-                self.results = pageMovies.results
+        movieAPIService.getMovie(type: type) { [weak self] result in
+            switch result {
+            case let .success(result):
+                self?.results = result
                 DispatchQueue.main.async {
-                    self.reloadTable?()
+                    self?.reloadTable?()
                 }
-            } catch {
+            case let .failure(error):
                 print(error.localizedDescription)
             }
-        }.resume()
+        }
     }
 
     func setupSwitchSegmentControl(segmentControl: UISegmentedControl) {

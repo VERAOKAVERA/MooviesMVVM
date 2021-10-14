@@ -22,7 +22,7 @@ final class DetailsViewModel: DetailsViewModelProtocol {
 
     // MARK: - Initializers
 
-    init(movieAPIService: MovieAPIServiceProtocol, movieID: Int?) {
+    init(movieAPIService: MovieAPIServiceProtocol, movieID: Int?, repository: DataBaseRepository<Description>) {
         self.movieAPIService = movieAPIService
         self.movieID = movieID
     }

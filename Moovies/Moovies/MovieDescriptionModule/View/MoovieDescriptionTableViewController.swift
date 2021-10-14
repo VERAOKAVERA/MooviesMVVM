@@ -17,6 +17,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     private var details: Description?
     private let cells: [Cells] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
+    private var repository: DataBaseRepository<Description>?
 
     // MARK: - Life Cycle View Controller
 
@@ -55,8 +56,9 @@ final class MoovieDescriptionTableViewController: UITableViewController {
         }
     }
 
-    func setupViewModel(viewModel: DetailsViewModelProtocol) {
+    func setupViewModel(viewModel: DetailsViewModelProtocol, repository: DataBaseRepository<Description>) {
         self.viewModel = viewModel
+        self.repository = repository
     }
 
     private func setupTableView() {

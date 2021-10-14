@@ -12,17 +12,27 @@ protocol AssemblyProtocol: AnyObject {
 final class ModulesBuilder: AssemblyProtocol {
     func buildMain() -> UIViewController {
         let movieAPIService = MovieAPIService()
-        let movieViewModel = MainViewModel(movieAPIService: movieAPIService)
+        let movieViewModel = MainViewModel(
+            movieAPIService: movieAPIService,
+            repository: RealmRepository<Result>()
+        )
         let movieViewController = MooviesViewController()
-        movieViewController.setupViewModel(viewModel: movieViewModel)
+        movieViewController.setupViewModel(viewModel: movieViewModel, repository: RealmRepository<Result>())
         return movieViewController
     }
 
     func buildDetails(movieID: Int?) -> UITableViewController {
         let detailsTableViewController = MoovieDescriptionTableViewController()
         let movieAPIService = MovieAPIService()
-        let detailsViewModel = DetailsViewModel(movieAPIService: movieAPIService, movieID: movieID)
-        detailsTableViewController.setupViewModel(viewModel: detailsViewModel)
+        let detailsViewModel = DetailsViewModel(
+            movieAPIService: movieAPIService,
+            movieID: movieID,
+            repository: RealmRepository<Description>()
+        )
+        detailsTableViewController.setupViewModel(
+            viewModel: detailsViewModel,
+            repository: RealmRepository<Description>()
+        )
         return detailsTableViewController
     }
 }

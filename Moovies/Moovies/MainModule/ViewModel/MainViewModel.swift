@@ -25,7 +25,7 @@ enum MovieListType: Int {
 // MARK: - Protocol MainViewModelProtocol
 
 protocol MainViewModelProtocol: AnyObject {
-    var results: [MovieData.Result]? { get }
+    var results: [Result]? { get }
     var movieData: MovieHandler? { get }
     var reloadTable: VoidHandler? { get set }
     func getMovie(type: MovieListType)
@@ -38,32 +38,46 @@ final class MainViewModel: MainViewModelProtocol {
     // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
+    private var repository: DataBaseRepository<Result>
 
     // MARK: - Internal Properties
 
-    var results: [MovieData.Result]?
+    var results: [Result]?
     var reloadTable: VoidHandler?
     var movieData: MovieHandler?
 
     // MARK: - Initialization
 
-    init(movieAPIService: MovieAPIServiceProtocol) {
+    init(movieAPIService: MovieAPIServiceProtocol, repository: DataBaseRepository<Result>) {
         self.movieAPIService = movieAPIService
+        self.repository = repository
     }
 
     // MARK: - Internal Methods
 
     func getMovie(type: MovieListType) {
         results?.removeAll()
-        movieAPIService.getMovie(type: type) { [weak self] result in
-            switch result {
-            case let .success(result):
-                self?.results = result
-                DispatchQueue.main.async {
-                    self?.reloadTable?()
+        let predicate = NSPredicate(format: "movieType = %i", type.rawValue)
+        results = repository.get(predicate: predicate)
+
+        if results == nil {
+            movieAPIService.getMovie(type: type) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case let .success(result):
+                    DispatchQueue.main.async {
+                        self.repository.save(object: result)
+                        self.results = self.repository.get(predicate: predicate)
+                        self.reloadTable?()
+                    }
+                case let .failure(error):
+                    print(error.localizedDescription)
                 }
-            case let .failure(error):
-                print(error.localizedDescription)
+            }
+        } else {
+            results = repository.get(predicate: predicate)
+            DispatchQueue.main.async {
+                self.reloadTable?()
             }
         }
     }

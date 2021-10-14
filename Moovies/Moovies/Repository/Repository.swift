@@ -1,67 +1,49 @@
-//
-//  Repository.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 14.10.2021.
-//
+// Repository.swift
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
+import RealmSwift
 
-protocol DatabaseProtocol {
-
-    func removeAll()
+protocol RepositoryProtocol: AnyObject {
+    associatedtype Entity
+    func get(predicate: NSPredicate) -> [Entity]?
+    func save(object: [Entity])
 }
 
-final class MoviesRealm: DatabaseProtocol {
-    func getDescription(id: Int) -> [Description] {
-        return []
+/// Абстракция над репозиторием
+class DataBaseRepository<DataBaseEntity>: RepositoryProtocol {
+    func get(predicate: NSPredicate) -> [DataBaseEntity]? {
+        fatalError("Override required")
     }
 
-    func addDescription(object: [Description], id: Int) {}
-
-    func get(movieType: MoviesType) -> [Movie] {
-        return [Movie](
-            repeating: .init(posterPath: "", overview: "", title: "", releaseDate: "", id: 0, voteAverage: 0),
-            count: 10
-        )
+    func save(object: [DataBaseEntity]) {
+        fatalError("Override required")
     }
-
-    func add(object: [Movie], movieType: MoviesType) {}
-    func remove(id: Int) {}
-    func removeAll() {}
 }
 
-protocol Repositorable {
-    func getMovie(movieType: MoviesType) -> [Movie]
-    func getMovieDescription(id: Int) -> [Description]
-    func save(obj: [Movie], movieType: MoviesType)
-    func saveDescription(obj: [Description], id: Int)
-    func deleteAll()
-}
-
-final class Repository: Repositorable {
-    var dataBase: DatabaseProtocol
-    init(dataBase: DatabaseProtocol) {
-        self.dataBase = dataBase
+final class RealmRepository<RealmEntity: Object>: DataBaseRepository<RealmEntity> {
+    override func get(predicate: NSPredicate) -> [RealmEntity]? {
+        do {
+            let realm = try Realm()
+            let objects = realm.objects(RealmEntity.self).filter(predicate)
+            var entites: [Entity]?
+            objects.forEach { movie in
+                (entites?.append(movie)) ?? (entites = [movie])
+            }
+            return entites
+        } catch {
+            return nil
+        }
     }
 
-    func getMovie(movieType: MoviesType) -> [Movie] {
-        return dataBase.get(movieType: movieType)
-    }
-
-    func getMovieDescription(id: Int) -> [Description] {
-        return dataBase.getDescription(id: id)
-    }
-
-    func save(obj: [Movie], movieType: MoviesType) {
-        dataBase.add(object: obj, movieType: movieType)
-    }
-
-    func saveDescription(obj: [Description], id: Int) {
-        dataBase.addDescription(object: obj, id: id)
-    }
-
-    func deleteAll() {
-        dataBase.removeAll()
+    override func save(object: [RealmEntity]) {
+        do {
+            let realm = try Realm()
+            realm.beginWrite()
+            realm.add(object)
+            try realm.commitWrite()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

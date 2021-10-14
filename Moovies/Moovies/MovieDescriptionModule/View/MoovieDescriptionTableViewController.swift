@@ -4,8 +4,8 @@
 import UIKit
 
 final class MoovieDescriptionTableViewController: UITableViewController {
-
     // MARK: - Enum
+
     enum Cells {
         case poster
         case overview

@@ -78,11 +78,7 @@ final class MooviesViewController: UIViewController {
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let id = viewModel?.results?[indexPath.row].id else { return }
-        let detailsTableViewController = MoovieDescriptionTableViewController()
-        let movieAPIService = MovieAPIService()
-        let detailsViewModel = DetailsViewModel(movieAPIService: movieAPIService, movieID: id)
-        detailsTableViewController.setupViewModel(viewModel: detailsViewModel)
-        navigationController?.pushViewController(detailsTableViewController, animated: true)
+        showDetails?(id)
     }
 }
 

@@ -4,6 +4,8 @@
 import UIKit
 
 final class MooviesViewController: UIViewController {
+    var showDetails: DetailsClosure?
+
     // MARK: - Private Properties
 
     private var viewModel: MainViewModelProtocol?

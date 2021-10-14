@@ -12,7 +12,8 @@ protocol RepositoryProtocol: AnyObject {
 
 /// Абстракция над репозиторием
 class DataBaseRepository<DataBaseEntity>: RepositoryProtocol {
-    func get(predicate: NSPredicate) -> [DataBaseEntity]? {
+    typealias Entity = DataBaseEntity
+    func get(predicate: NSPredicate) -> [Entity]? {
         fatalError("Override required")
     }
 
@@ -22,21 +23,34 @@ class DataBaseRepository<DataBaseEntity>: RepositoryProtocol {
 }
 
 final class RealmRepository<RealmEntity: Object>: DataBaseRepository<RealmEntity> {
-    override func get(predicate: NSPredicate) -> [RealmEntity]? {
+    typealias Entity = RealmEntity
+    override func get(predicate: NSPredicate) -> [Entity]? {
         do {
             let realm = try Realm()
-            let objects = realm.objects(RealmEntity.self).filter(predicate)
-            var entites: [Entity]?
-            objects.forEach { movie in
-                (entites?.append(movie)) ?? (entites = [movie])
+            let rez = realm.objects(Entity.self).filter(predicate)
+            var mas: [Entity] = []
+            rez.forEach {
+                mas.append($0)
             }
-            return entites
+            return mas
         } catch {
-            return nil
+            return []
         }
     }
 
-    override func save(object: [RealmEntity]) {
+//        do {
+//            let realm = try Realm()
+//            let objects = realm.objects(RealmEntity.self).filter(predicate)
+//            var entites: [Entity]?
+//            objects.forEach { movie in
+//                (entites?.append(movie)) ?? (entites = [movie])
+//            }
+//            return entites
+//        } catch {
+//            return nil
+//        }
+
+    override func save(object: [Entity]) {
         do {
             let realm = try Realm()
             realm.beginWrite()

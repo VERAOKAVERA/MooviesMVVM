@@ -57,7 +57,8 @@ final class MainViewModel: MainViewModelProtocol {
 
     func getMovie(type: MovieListType) {
         results?.removeAll()
-        let predicate = NSPredicate(format: "movieType = %i", type.rawValue)
+
+        let predicate = NSPredicate(format: "movieType == %@", String(type.urlPath))
         results = repository.get(predicate: predicate)
 
         if results == nil {
@@ -65,6 +66,7 @@ final class MainViewModel: MainViewModelProtocol {
                 guard let self = self else { return }
                 switch result {
                 case let .success(result):
+
                     DispatchQueue.main.async {
                         self.repository.save(object: result)
                         self.results = self.repository.get(predicate: predicate)

@@ -18,7 +18,7 @@
 		1252B8872717551100A08396 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B8862717551100A08396 /* BaseCoordinator.swift */; };
 		1252B8892717A4FE00A08396 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B8882717A4FE00A08396 /* AppCoordinator.swift */; };
 		1252B88B2717A57400A08396 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B88A2717A57400A08396 /* MainCoordinator.swift */; };
-		1252B88D2717A5DA00A08396 /* DetailsClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B88C2717A5DA00A08396 /* DetailsClosure.swift */; };
+		1252B88D2717A5DA00A08396 /* IntHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B88C2717A5DA00A08396 /* IntHandler.swift */; };
 		1252B8952717A83200A08396 /* MooviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B8942717A83200A08396 /* MooviesTests.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
@@ -55,7 +55,7 @@
 		1252B8862717551100A08396 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		1252B8882717A4FE00A08396 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1252B88A2717A57400A08396 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		1252B88C2717A5DA00A08396 /* DetailsClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsClosure.swift; sourceTree = "<group>"; };
+		1252B88C2717A5DA00A08396 /* IntHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntHandler.swift; sourceTree = "<group>"; };
 		1252B8922717A83200A08396 /* MooviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1252B8942717A83200A08396 /* MooviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesTests.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,7 +159,7 @@
 			children = (
 				12067A23271468760000D508 /* MovieHandler.swift */,
 				12067A25271468AD0000D508 /* VoidHandler.swift */,
-				1252B88C2717A5DA00A08396 /* DetailsClosure.swift */,
+				1252B88C2717A5DA00A08396 /* IntHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -427,7 +427,7 @@
 			files = (
 				12E2F76326CC3D4A004E5367 /* PosterTableViewCell.swift in Sources */,
 				1252B8802715CD2000A08396 /* MovieAPIService.swift in Sources */,
-				1252B88D2717A5DA00A08396 /* DetailsClosure.swift in Sources */,
+				1252B88D2717A5DA00A08396 /* IntHandler.swift in Sources */,
 				12E2F76D26CC3E47004E5367 /* MooviesViewController.swift in Sources */,
 				1252B8822715CFE500A08396 /* DetailsViewModel.swift in Sources */,
 				1252B87D2715CBA800A08396 /* ImageAPIService.swift in Sources */,

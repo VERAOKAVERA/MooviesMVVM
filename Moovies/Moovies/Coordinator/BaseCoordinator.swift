@@ -6,7 +6,7 @@ import UIKit
 
 /// координатор
 class BaseCoordinator {
-    var childCoordinators: [BaseCoordinator] = []
+    private var childCoordinators: [BaseCoordinator] = []
 
     required init(assemblyModule: AssemblyProtocol, navController: UINavigationController? = nil) {}
 

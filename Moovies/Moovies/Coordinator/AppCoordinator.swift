@@ -5,8 +5,8 @@ import Foundation
 import UIKit
 
 final class AppCoordinator: BaseCoordinator {
-    var assemblyModule: AssemblyProtocol
-    var navController: UINavigationController?
+   private var assemblyModule: AssemblyProtocol
+   private var navController: UINavigationController?
 
     required init(assemblyModule: AssemblyProtocol, navController: UINavigationController? = nil) {
         self.assemblyModule = assemblyModule

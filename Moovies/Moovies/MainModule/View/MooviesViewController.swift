@@ -4,7 +4,7 @@
 import UIKit
 
 final class MooviesViewController: UIViewController {
-    var showDetails: DetailsClosure?
+    var showDetails: IntHandler?
 
     // MARK: - Private Properties
 

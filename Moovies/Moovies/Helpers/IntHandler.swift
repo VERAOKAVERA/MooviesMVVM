@@ -3,4 +3,4 @@
 
 import Foundation
 
-typealias DetailsClosure = ((Int) -> ())
+typealias IntHandler = ((Int) -> ())

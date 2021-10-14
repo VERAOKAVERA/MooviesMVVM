@@ -5,9 +5,9 @@ import Foundation
 import UIKit
 
 final class MainCoordinator: BaseCoordinator {
-    var navController: UINavigationController?
-    var onFinishFlow: VoidHandler?
-    var assemblyModule: AssemblyProtocol
+   private var navController: UINavigationController?
+   var onFinishFlow: VoidHandler?
+    private  var assemblyModule: AssemblyProtocol
 
     required init(assemblyModule: AssemblyProtocol, navController: UINavigationController? = nil) {
         self.assemblyModule = assemblyModule

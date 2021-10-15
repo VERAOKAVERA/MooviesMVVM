@@ -19,8 +19,7 @@ final class MooviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel?
-            .getMovie(type: .popular)
+        viewModel?.setSelectedPage(0)
         setupTableView()
         setupSegmentControl()
         reloadTable()
@@ -43,8 +42,8 @@ final class MooviesViewController: UIViewController {
         segmentControl.addTarget(self, action: #selector(segmentedValueChanged), for: .valueChanged)
     }
 
-    @objc func segmentedValueChanged(_: UISegmentedControl!) {
-        viewModel?.setupSwitchSegmentControl(segmentControl: segmentControl)
+    @objc func segmentedValueChanged(segmentControl: UISegmentedControl!) {
+        viewModel?.setSelectedPage(segmentControl.selectedSegmentIndex)
     }
 
     private func setupTableView() {

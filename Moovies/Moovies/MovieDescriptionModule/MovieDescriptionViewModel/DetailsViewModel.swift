@@ -32,10 +32,9 @@ final class DetailsViewModel: DetailsViewModelProtocol {
     // MARK: - Internal Methods
 
     func getDetailsMovie() {
-        let predicate = NSPredicate(format: "id == %i", movieID ?? 0)
-        let cacheResults = repository.get(predicate: predicate)
-
-        if cacheResults.isEmpty {
+        if let cacheResults = repository.getDescription(of: movieID ?? 0) {
+            details = cacheResults.first
+        } else {
             movieAPIService.getMovieDetails(movieID: movieID ?? 0) { [weak self] result in
                 switch result {
                 case let .success(details):
@@ -49,8 +48,6 @@ final class DetailsViewModel: DetailsViewModelProtocol {
                     print(error.localizedDescription)
                 }
             }
-        } else {
-            details = cacheResults.first
         }
     }
 }

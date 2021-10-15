@@ -6,7 +6,8 @@ import RealmSwift
 
 protocol RepositoryProtocol: AnyObject {
     associatedtype Entity
-    func get(predicate: NSPredicate) -> [Entity]
+    func getMoviesList(of type: MovieListType) -> [Entity]
+    func getDescription(of movieID: Int) -> [Entity]?
     func save(object: [Entity])
     func removeAll()
 }
@@ -15,7 +16,7 @@ protocol RepositoryProtocol: AnyObject {
 class Repository<DataBaseEntity>: RepositoryProtocol {
     typealias Entity = DataBaseEntity
 
-    func get(predicate: NSPredicate) -> [Entity] {
+    func getMoviesList(of type: MovieListType) -> [Entity] {
         fatalError("")
     }
 
@@ -23,10 +24,15 @@ class Repository<DataBaseEntity>: RepositoryProtocol {
         fatalError("")
     }
 
+    func getDescription(of movieID: Int) -> [Entity]? {
+        fatalError()
+    }
+
     func removeAll() {}
 }
 
-final class RealmRepository<RealmEntity: Object>: Repository<RealmEntity> {
+/// а
+class RealmRepository<RealmEntity: Object>: Repository<RealmEntity> {
     typealias Entity = RealmEntity
 
     override func save(object: [Entity]) {
@@ -42,8 +48,24 @@ final class RealmRepository<RealmEntity: Object>: Repository<RealmEntity> {
         }
     }
 
-    override func get(predicate: NSPredicate) -> [Entity] {
+    override func getMoviesList(of type: MovieListType) -> [Entity] {
         do {
+            let predicate = NSPredicate(format: "movieType == %@", String(type.urlPath))
+            let realm = try Realm()
+            let rez = realm.objects(Entity.self).filter(predicate)
+            var mas: [Entity] = []
+            rez.forEach {
+                mas.append($0)
+            }
+            return mas
+        } catch {
+            return []
+        }
+    }
+
+    override func getDescription(of movieID: Int) -> [Entity]? {
+        do {
+            let predicate = NSPredicate(format: "id == %i", movieID ?? 0)
             let realm = try Realm()
             let rez = realm.objects(Entity.self).filter(predicate)
             var mas: [Entity] = []

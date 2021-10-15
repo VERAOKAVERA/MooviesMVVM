@@ -12,7 +12,7 @@ protocol AssemblyProtocol: AnyObject {
 final class ModulesBuilder: AssemblyProtocol {
     func buildMain() -> UIViewController {
         let movieAPIService = MovieAPIService()
-        let repository = RealmRepository<Result>()
+        let repository = RealmRepository<Results>()
         let movieViewModel = MainViewModel(
             movieAPIService: movieAPIService,
             repository: repository

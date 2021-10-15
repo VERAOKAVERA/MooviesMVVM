@@ -32,7 +32,7 @@ final class DetailsViewModel: DetailsViewModelProtocol {
     // MARK: - Internal Methods
 
     func getDetailsMovie() {
-        let predicate = NSPredicate(format: "id == %@", String(movieID ?? 0))
+        let predicate = NSPredicate(format: "id == %i", movieID ?? 0)
         let cacheResults = repository.get(predicate: predicate)
 
         if cacheResults.isEmpty {

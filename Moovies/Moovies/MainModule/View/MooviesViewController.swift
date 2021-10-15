@@ -9,6 +9,7 @@ final class MooviesViewController: UIViewController {
     // MARK: - Private Properties
 
     private var viewModel: MainViewModelProtocol?
+//    private var repository: RealmRepository<Result>?
 
     // MARK: - Visual Components
 
@@ -29,6 +30,7 @@ final class MooviesViewController: UIViewController {
 
     func setupViewModel(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
+//        self.repository = repository
     }
 
     // MARK: - Private Methods

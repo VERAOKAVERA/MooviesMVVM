@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,12 @@
 		1252B88B2717A57400A08396 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B88A2717A57400A08396 /* MainCoordinator.swift */; };
 		1252B88D2717A5DA00A08396 /* IntHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B88C2717A5DA00A08396 /* IntHandler.swift */; };
 		1252B8952717A83200A08396 /* MooviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B8942717A83200A08396 /* MooviesTests.swift */; };
+		1252B89D2718AE9700A08396 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B89C2718AE9700A08396 /* Repository.swift */; };
+		1252B8A02718B05300A08396 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1252B89F2718B05300A08396 /* Realm */; };
+		1252B8A22718B05300A08396 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1252B8A12718B05300A08396 /* RealmSwift */; };
+		1252B8A52718D79300A08396 /* CacheImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1252B8A42718D79300A08396 /* CacheImageService.swift */; };
+		127CE4BB271972A50042A487 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127CE4BA271972A50042A487 /* FileManager.swift */; };
+		127CE4BD271972ED0042A487 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127CE4BC271972ED0042A487 /* Proxy.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
 		12E2F75226CC3C12004E5367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E2F75026CC3C12004E5367 /* Main.storyboard */; };
@@ -58,6 +64,10 @@
 		1252B88C2717A5DA00A08396 /* IntHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntHandler.swift; sourceTree = "<group>"; };
 		1252B8922717A83200A08396 /* MooviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1252B8942717A83200A08396 /* MooviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesTests.swift; sourceTree = "<group>"; };
+		1252B89C2718AE9700A08396 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		1252B8A42718D79300A08396 /* CacheImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageService.swift; sourceTree = "<group>"; };
+		127CE4BA271972A50042A487 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		127CE4BC271972ED0042A487 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E2F74A26CC3C12004E5367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1252B8A22718B05300A08396 /* RealmSwift in Frameworks */,
+				1252B8A02718B05300A08396 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +187,7 @@
 		1252B87A2715CB8A00A08396 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1252B8A32718D77300A08396 /* CacheImageService */,
 				1252B87E2715CC8300A08396 /* MovieAPIService */,
 				1252B87B2715CB9400A08396 /* ImageService */,
 			);
@@ -223,6 +236,24 @@
 			path = MooviesTests;
 			sourceTree = "<group>";
 		};
+		1252B89B2718AE6700A08396 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1252B89C2718AE9700A08396 /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1252B8A32718D77300A08396 /* CacheImageService */ = {
+			isa = PBXGroup;
+			children = (
+				1252B8A42718D79300A08396 /* CacheImageService.swift */,
+				127CE4BA271972A50042A487 /* FileManager.swift */,
+				127CE4BC271972ED0042A487 /* Proxy.swift */,
+			);
+			path = CacheImageService;
+			sourceTree = "<group>";
+		};
 		12E2F73E26CC3C11004E5367 = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +275,7 @@
 		12E2F74926CC3C12004E5367 /* Moovies */ = {
 			isa = PBXGroup;
 			children = (
+				1252B89B2718AE6700A08396 /* Repository */,
 				1252B883271754BA00A08396 /* Coordinator */,
 				1252B87A2715CB8A00A08396 /* Services */,
 				12067A27271477CC0000D508 /* Assembly */,
@@ -312,6 +344,10 @@
 			dependencies = (
 			);
 			name = Moovies;
+			packageProductDependencies = (
+				1252B89F2718B05300A08396 /* Realm */,
+				1252B8A12718B05300A08396 /* RealmSwift */,
+			);
 			productName = Moovies;
 			productReference = 12E2F74726CC3C12004E5367 /* Moovies.app */;
 			productType = "com.apple.product-type.application";
@@ -343,6 +379,9 @@
 				Base,
 			);
 			mainGroup = 12E2F73E26CC3C11004E5367;
+			packageReferences = (
+				1252B89E2718B05300A08396 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 12E2F74826CC3C12004E5367 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -434,11 +473,15 @@
 				12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */,
 				1252B8892717A4FE00A08396 /* AppCoordinator.swift in Sources */,
 				1252B8872717551100A08396 /* BaseCoordinator.swift in Sources */,
+				127CE4BB271972A50042A487 /* FileManager.swift in Sources */,
 				12E2F75F26CC3CF5004E5367 /* MooviesTableViewCell.swift in Sources */,
 				12067A26271468AD0000D508 /* VoidHandler.swift in Sources */,
 				12067A24271468760000D508 /* MovieHandler.swift in Sources */,
 				12E2F76726CC3DC7004E5367 /* MoovieDescription.swift in Sources */,
 				12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */,
+				1252B8A52718D79300A08396 /* CacheImageService.swift in Sources */,
+				127CE4BD271972ED0042A487 /* Proxy.swift in Sources */,
+				1252B89D2718AE9700A08396 /* Repository.swift in Sources */,
 				12E2F76126CC3D32004E5367 /* OverviewTableViewCell.swift in Sources */,
 				1252B88B2717A57400A08396 /* MainCoordinator.swift in Sources */,
 				12E2F76B26CC3E10004E5367 /* MoovieDescriptionTableViewController.swift in Sources */,
@@ -713,6 +756,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1252B89E2718B05300A08396 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1252B89F2718B05300A08396 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1252B89E2718B05300A08396 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		1252B8A12718B05300A08396 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1252B89E2718B05300A08396 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 12E2F73F26CC3C11004E5367 /* Project object */;
 }

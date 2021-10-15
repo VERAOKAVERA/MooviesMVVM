@@ -17,6 +17,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     private var details: Description?
     private let cells: [Cells] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
+//    private var repository: RealmRepository<Description>?
 
     // MARK: - Life Cycle View Controller
 

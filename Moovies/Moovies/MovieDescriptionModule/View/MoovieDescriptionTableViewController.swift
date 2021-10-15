@@ -58,7 +58,6 @@ final class MoovieDescriptionTableViewController: UITableViewController {
 
     func setupViewModel(viewModel: DetailsViewModelProtocol) {
         self.viewModel = viewModel
-//        self.repository = repository
     }
 
     private func setupTableView() {

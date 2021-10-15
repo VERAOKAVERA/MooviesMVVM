@@ -32,7 +32,7 @@ final class DetailsViewModel: DetailsViewModelProtocol {
     // MARK: - Internal Methods
 
     func getDetailsMovie() {
-        let predicate = NSPredicate(format: "id = \(movieID)")
+        let predicate = NSPredicate(format: "id == %@", String(movieID ?? 0))
         let cacheResults = repository.get(predicate: predicate)
 
         if cacheResults.isEmpty {
@@ -42,6 +42,7 @@ final class DetailsViewModel: DetailsViewModelProtocol {
                     self?.details = details
                     DispatchQueue.main.async {
                         self?.repository.save(object: [details])
+                        self?.details = details
                         self?.reloadTable?()
                     }
                 case let .failure(error):

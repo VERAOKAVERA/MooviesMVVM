@@ -12,12 +12,12 @@ import RealmSwift
 //    // результаты фильмов, которые скоро выйдут в прокат
 //    case upcoming([Result])
 //
-struct Film: Decodable {
+struct Film: Codable {
     var results: [Result]
 }
 
 /// результаты
-final class Result: Object, Decodable {
+@objc final class Result: Object, Codable {
     @objc dynamic var posterPath = String()
     @objc dynamic var overview = String()
     @objc dynamic var title = String()
@@ -25,6 +25,8 @@ final class Result: Object, Decodable {
     @objc dynamic var id = Int()
     @objc dynamic var voteAverage = Float()
     @objc dynamic var movieType: String?
-}
 
-// }
+    override class func primaryKey() -> String? {
+        "title"
+    }
+}

@@ -19,27 +19,37 @@ final class DetailsViewModel: DetailsViewModelProtocol {
     // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
+    private var repository: RealmRepository<Description>
 
     // MARK: - Initializers
 
-    init(movieAPIService: MovieAPIServiceProtocol, movieID: Int?, repository: DataBaseRepository<Description>) {
+    init(movieAPIService: MovieAPIServiceProtocol, movieID: Int?, repository: RealmRepository<Description>) {
         self.movieAPIService = movieAPIService
         self.movieID = movieID
+        self.repository = repository
     }
 
     // MARK: - Internal Methods
 
     func getDetailsMovie() {
-        movieAPIService.getMovieDetails(movieID: movieID ?? 0) { [weak self] result in
-            switch result {
-            case let .success(details):
-                self?.details = details
-                DispatchQueue.main.async {
-                    self?.reloadTable?()
+        let predicate = NSPredicate(format: "id = \(movieID)")
+        let cacheResults = repository.get(predicate: predicate)
+
+        if cacheResults.isEmpty {
+            movieAPIService.getMovieDetails(movieID: movieID ?? 0) { [weak self] result in
+                switch result {
+                case let .success(details):
+                    self?.details = details
+                    DispatchQueue.main.async {
+                        self?.repository.save(object: [details])
+                        self?.reloadTable?()
+                    }
+                case let .failure(error):
+                    print(error.localizedDescription)
                 }
-            case let .failure(error):
-                print(error.localizedDescription)
             }
+        } else {
+            details = cacheResults.first
         }
     }
 }

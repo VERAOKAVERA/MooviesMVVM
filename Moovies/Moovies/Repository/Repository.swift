@@ -6,25 +6,43 @@ import RealmSwift
 
 protocol RepositoryProtocol: AnyObject {
     associatedtype Entity
-    func get(predicate: NSPredicate) -> [Entity]?
+    func get(predicate: NSPredicate) -> [Entity]
     func save(object: [Entity])
+    func removeAll()
 }
 
-/// Абстракция над репозиторием
-class DataBaseRepository<DataBaseEntity>: RepositoryProtocol {
+///
+class Repository<DataBaseEntity>: RepositoryProtocol {
     typealias Entity = DataBaseEntity
-    func get(predicate: NSPredicate) -> [Entity]? {
-        fatalError("Override required")
+
+    func get(predicate: NSPredicate) -> [Entity] {
+        fatalError("")
     }
 
-    func save(object: [DataBaseEntity]) {
-        fatalError("Override required")
+    func save(object: [Entity]) {
+        fatalError("")
     }
+
+    func removeAll() {}
 }
 
-final class RealmRepository<RealmEntity: Object>: DataBaseRepository<RealmEntity> {
+final class RealmRepository<RealmEntity: Object>: Repository<RealmEntity> {
     typealias Entity = RealmEntity
-    override func get(predicate: NSPredicate) -> [Entity]? {
+
+    override func save(object: [Entity]) {
+        do {
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+            let realm = try Realm(configuration: config)
+
+            try realm.write {
+                realm.add(object, update: .all)
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    override func get(predicate: NSPredicate) -> [Entity] {
         do {
             let realm = try Realm()
             let rez = realm.objects(Entity.self).filter(predicate)
@@ -35,29 +53,6 @@ final class RealmRepository<RealmEntity: Object>: DataBaseRepository<RealmEntity
             return mas
         } catch {
             return []
-        }
-    }
-
-//        do {
-//            let realm = try Realm()
-//            let objects = realm.objects(RealmEntity.self).filter(predicate)
-//            var entites: [Entity]?
-//            objects.forEach { movie in
-//                (entites?.append(movie)) ?? (entites = [movie])
-//            }
-//            return entites
-//        } catch {
-//            return nil
-//        }
-
-    override func save(object: [Entity]) {
-        do {
-            let realm = try Realm()
-            realm.beginWrite()
-            realm.add(object)
-            try realm.commitWrite()
-        } catch {
-            print(error.localizedDescription)
         }
     }
 }

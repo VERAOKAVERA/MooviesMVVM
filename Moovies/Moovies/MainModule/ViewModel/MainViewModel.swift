@@ -38,7 +38,7 @@ final class MainViewModel: MainViewModelProtocol {
     // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
-    private var repository: DataBaseRepository<Result>
+    private var repository: RealmRepository<Result>
 
     // MARK: - Internal Properties
 
@@ -48,7 +48,7 @@ final class MainViewModel: MainViewModelProtocol {
 
     // MARK: - Initialization
 
-    init(movieAPIService: MovieAPIServiceProtocol, repository: DataBaseRepository<Result>) {
+    init(movieAPIService: MovieAPIServiceProtocol, repository: RealmRepository<Result>) {
         self.movieAPIService = movieAPIService
         self.repository = repository
     }
@@ -59,9 +59,9 @@ final class MainViewModel: MainViewModelProtocol {
         results?.removeAll()
 
         let predicate = NSPredicate(format: "movieType == %@", String(type.urlPath))
-        results = repository.get(predicate: predicate)
+        let cacheResults = repository.get(predicate: predicate)
 
-        if results == nil {
+        if cacheResults.isEmpty {
             movieAPIService.getMovie(type: type) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
@@ -69,7 +69,7 @@ final class MainViewModel: MainViewModelProtocol {
 
                     DispatchQueue.main.async {
                         self.repository.save(object: result)
-                        self.results = self.repository.get(predicate: predicate)
+                        self.results = result
                         self.reloadTable?()
                     }
                 case let .failure(error):
@@ -77,7 +77,7 @@ final class MainViewModel: MainViewModelProtocol {
                 }
             }
         } else {
-            results = repository.get(predicate: predicate)
+            results = cacheResults
             DispatchQueue.main.async {
                 self.reloadTable?()
             }

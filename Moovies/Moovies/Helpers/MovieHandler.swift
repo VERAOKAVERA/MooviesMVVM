@@ -3,4 +3,4 @@
 
 import Foundation
 
-typealias MovieHandler = (([Result]) -> Void)
+typealias MovieHandler = (([Results]) -> Void)

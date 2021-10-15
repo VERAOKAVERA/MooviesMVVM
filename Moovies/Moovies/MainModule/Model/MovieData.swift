@@ -13,11 +13,11 @@ import RealmSwift
 //    case upcoming([Result])
 //
 struct Film: Codable {
-    var results: [Result]
+    var results: [Results]
 }
 
 /// результаты
-@objc final class Result: Object, Codable {
+@objc final class Results: Object, Codable {
     @objc dynamic var posterPath = String()
     @objc dynamic var overview = String()
     @objc dynamic var title = String()

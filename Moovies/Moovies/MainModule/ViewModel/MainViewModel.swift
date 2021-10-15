@@ -5,31 +5,23 @@ import Foundation
 import UIKit
 
 /// Enum MoviesType
-enum MovieListType: Int {
-    case topRated
+enum MovieListType: String {
+    case topRated = "top_rated"
     case popular
     case upcoming
 
     var urlPath: String {
-        switch self {
-        case .popular:
-            return "popular"
-        case .topRated:
-            return "top_rated"
-        case .upcoming:
-            return "upcoming"
-        }
+        rawValue
     }
 }
 
 // MARK: - Protocol MainViewModelProtocol
 
 protocol MainViewModelProtocol: AnyObject {
-    var results: [Result]? { get }
+    var results: [Results]? { get }
     var movieData: MovieHandler? { get }
     var reloadTable: VoidHandler? { get set }
-    func getMovie(type: MovieListType)
-    func setupSwitchSegmentControl(segmentControl: UISegmentedControl)
+    func setSelectedPage(_ page: Int)
 }
 
 // MARK: - Class MainViewModel
@@ -38,35 +30,33 @@ final class MainViewModel: MainViewModelProtocol {
     // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
-    private var repository: RealmRepository<Result>
+    private var repository: Repository<Results>
 
     // MARK: - Internal Properties
 
-    var results: [Result]?
+    var results: [Results]?
     var reloadTable: VoidHandler?
     var movieData: MovieHandler?
 
     // MARK: - Initialization
 
-    init(movieAPIService: MovieAPIServiceProtocol, repository: RealmRepository<Result>) {
+    init(movieAPIService: MovieAPIServiceProtocol, repository: Repository<Results>) {
         self.movieAPIService = movieAPIService
         self.repository = repository
     }
 
     // MARK: - Internal Methods
 
-    func getMovie(type: MovieListType) {
+    private func getMovie(type: MovieListType) {
         results?.removeAll()
 
-        let predicate = NSPredicate(format: "movieType == %@", String(type.urlPath))
-        let cacheResults = repository.get(predicate: predicate)
+        let cacheResults = repository.getMoviesList(of: type)
 
         if cacheResults.isEmpty {
             movieAPIService.getMovie(type: type) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case let .success(result):
-
                     DispatchQueue.main.async {
                         self.repository.save(object: result)
                         self.results = result
@@ -84,8 +74,8 @@ final class MainViewModel: MainViewModelProtocol {
         }
     }
 
-    func setupSwitchSegmentControl(segmentControl: UISegmentedControl) {
-        switch segmentControl.selectedSegmentIndex {
+    func setSelectedPage(_ page: Int) {
+        switch page {
         case 0:
             getMovie(type: .popular)
         case 1:

@@ -11,8 +11,8 @@ protocol RepositoryProtocol: AnyObject {
     func removeAll()
 }
 
-///
-class Repository<DataBaseEntity>: RepositoryProtocol {
+
+final class Repository<DataBaseEntity>: RepositoryProtocol {
     typealias Entity = DataBaseEntity
 
     func get(predicate: NSPredicate) -> [Entity] {

@@ -4,11 +4,11 @@
 import Foundation
 import UIKit
 
-protocol ImageAPIServiceProtocol: AnyObject {
+protocol ProxyProtocol: AnyObject {
     func getImage(imagePath: String, completion: @escaping (Swift.Result<UIImage, Error>) -> ())
 }
 
-final class ImageAPIService: ImageAPIServiceProtocol {
+final class ImageAPIService: ProxyProtocol {
     private let staticImageURL = "https://image.tmdb.org/t/p/w500"
 
     func getImage(imagePath: String, completion: @escaping (Swift.Result<UIImage, Error>) -> ()) {

@@ -16,12 +16,12 @@ protocol LoadImageProtocol {
 final class Proxy: LoadImageProtocol {
     // MARK: - Private Properties
 
-    private let imageAPIService: ImageAPIServiceProtocol?
+    private let imageAPIService: ProxyProtocol?
     private let fileManagerService: FileManagerServiceProtocol?
 
     // MARK: - Initializers
 
-    init(imageAPIService: ImageAPIServiceProtocol, fileManagerService: FileManagerServiceProtocol) {
+    init(imageAPIService: ProxyProtocol, fileManagerService: FileManagerServiceProtocol) {
         self.imageAPIService = imageAPIService
         self.fileManagerService = fileManagerService
     }

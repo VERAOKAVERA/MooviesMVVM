@@ -1,5 +1,5 @@
 // MoovieDescriptionTableViewController.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Vera Malygina. All rights reserved.
 
 import UIKit
 
@@ -17,7 +17,6 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     private var details: Description?
     private let cells: [Cells] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
-//    private var repository: RealmRepository<Description>?
 
     // MARK: - Life Cycle View Controller
 

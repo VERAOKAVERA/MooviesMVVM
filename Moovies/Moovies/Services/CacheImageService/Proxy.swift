@@ -1,12 +1,6 @@
 // Proxy.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Vera Malygina. All rights reserved.
 
-//
-//  Proxy.swift
-//  Moovies
-//
-//  Created by Vera Zaitseva on 15.10.2021.
-//
 import UIKit
 
 protocol LoadImageProtocol {

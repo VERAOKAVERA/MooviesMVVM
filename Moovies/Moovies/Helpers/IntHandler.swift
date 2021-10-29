@@ -1,5 +1,5 @@
 // IntHandler.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Vera Malygina. All rights reserved.
 
 import Foundation
 
